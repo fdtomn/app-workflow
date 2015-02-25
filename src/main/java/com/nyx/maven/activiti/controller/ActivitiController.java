@@ -3,6 +3,7 @@ package com.nyx.maven.activiti.controller;
 import javax.annotation.Resource;
 
 import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.RepositoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,11 @@ public class ActivitiController {
 	
 	@RequestMapping
 	public String list(Model model){
+		
+		
+		RepositoryService repositoryService = processEngine.getRepositoryService();
+		
+		
 		String[] tmp = ActivitiUtil.getTemplate(); 
 		model.addAttribute("list", tmp);
 		System.out.println("list:"+tmp.length);
